@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant.dart';
 import 'box_history.dart';
+import 'detail_pesanan_onReview.dart';
 
 class HistoryPage extends StatelessWidget {
   HistoryPage({super.key});
@@ -24,28 +25,36 @@ class HistoryPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: BoxHistoriStudio(
-              width: width,
-              widget: Container(
-                width: 80,
-                height: 30,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Constant.primaryColor),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    textStyle: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 8,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => DetailPesananOnReview(
+                          onReview: false,
+                        )));
+              },
+              child: BoxHistoriStudio(
+                width: width,
+                widget: Container(
+                  width: 80,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Constant.primaryColor),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      textStyle: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 8,
+                      ),
                     ),
+                    onPressed: () {},
+                    child: const Text('Booking Lagi'),
                   ),
-                  onPressed: () {},
-                  child: const Text('Booking Lagi'),
                 ),
+                imgUrl: imgUrl[index],
               ),
-              imgUrl: imgUrl[index],
             ),
           );
         },

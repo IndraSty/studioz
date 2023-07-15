@@ -16,6 +16,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final studio = daftarStudio;
+  bool onCLic = true;
+
+  void onClickIcon() {
+    setState(() {
+      onCLic = !onCLic;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -82,7 +89,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  
                   Container(
                     height: 38,
                     width: 38,
@@ -230,6 +236,14 @@ class _HomePageState extends State<HomePage> {
                         width: width,
                         height: height,
                         img: imgUrl[index],
+                        widget: IconButton(
+                          onPressed: () => onClickIcon(),
+                          icon: Icon(
+                            onCLic ? Icons.bookmark_border : Icons.bookmark,
+                            color: Colors.white,
+                            size: 26,
+                          ),
+                        ),
                       ),
                     ),
                   );

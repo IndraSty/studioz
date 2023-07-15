@@ -9,11 +9,13 @@ class BoxStudioItem extends StatelessWidget {
     required this.width,
     required this.height,
     required this.img,
+    required this.widget,
   });
 
   final double width;
   final double height;
   final String img;
+  final Widget widget;
 
   @override
   Widget build(BuildContext context) {
@@ -130,16 +132,10 @@ class BoxStudioItem extends StatelessWidget {
               ),
             ),
             Positioned(
-                top: 150,
-                right: -12,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.bookmark_border,
-                    color: Colors.white,
-                    size: 26,
-                  ),
-                )),
+              top: 150,
+              right: -12,
+              child: widget,
+            ),
           ],
         ),
       ),
@@ -147,11 +143,11 @@ class BoxStudioItem extends StatelessWidget {
   }
 }
 
-
 class BarItemStudio extends StatelessWidget {
   const BarItemStudio({
     super.key,
-    required this.width, required this.imgUrl,
+    required this.width,
+    required this.imgUrl,
   });
 
   final double width;
@@ -164,8 +160,7 @@ class BarItemStudio extends StatelessWidget {
       height: 81,
       padding: const EdgeInsets.symmetric(horizontal: 3),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white),
+          borderRadius: BorderRadius.circular(15), color: Colors.white),
       child: Row(
         children: [
           Container(
@@ -174,12 +169,13 @@ class BarItemStudio extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: NetworkImage(
-                      imgUrl),
+                  image: NetworkImage(imgUrl),
                   fit: BoxFit.cover,
                 )),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Container(
             width: 255,
             padding: EdgeInsets.symmetric(vertical: 8),
@@ -213,7 +209,9 @@ class BarItemStudio extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
                         Text(
@@ -260,8 +258,14 @@ class BarItemStudio extends StatelessWidget {
                         fontSize: 8,
                       ),
                     ),
-                    const SizedBox(height: 10,),
-                    const Icon(Icons.bookmark, color: Constant.primaryColor, size: 22,)
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Icon(
+                      Icons.bookmark,
+                      color: Constant.primaryColor,
+                      size: 22,
+                    )
                   ],
                 ),
               ],
@@ -272,4 +276,3 @@ class BarItemStudio extends StatelessWidget {
     );
   }
 }
-

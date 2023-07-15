@@ -16,6 +16,13 @@ class StudioView extends StatefulWidget {
 class _StudioViewState extends State<StudioView>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  bool onCLic = true;
+
+  void onClickIcon() {
+    setState(() {
+      onCLic = !onCLic;
+    });
+  }
 
   @override
   void initState() {
@@ -47,7 +54,7 @@ class _StudioViewState extends State<StudioView>
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://cdn-cms.pgimgs.com/static/2020/11/1.-studio-musik.jpg'),
+                    'https://events.rumah123.com/news-content/img/2021/08/14164041/biaya-membuat-studio-musik.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -83,10 +90,13 @@ class _StudioViewState extends State<StudioView>
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: const Color(0xff2D2C2C).withOpacity(0.3)),
-                    child: const Icon(
-                      Icons.bookmark_outline_outlined,
-                      color: Colors.white,
-                      size: 26,
+                    child: IconButton(
+                      onPressed: () => onClickIcon(),
+                      icon: Icon(
+                        onCLic ? Icons.bookmark_border : Icons.bookmark,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                     ),
                   ),
                 ),

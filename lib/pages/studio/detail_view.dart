@@ -202,10 +202,11 @@ class DetailView extends StatelessWidget {
                                     ],
                                   ),
                                   const SizedBox(
-                                    height: 10,
+                                    height: 25,
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Tanggal',
@@ -215,7 +216,6 @@ class DetailView extends StatelessWidget {
                                           color: Constant.fontColor,
                                         ),
                                       ),
-                                      
                                       Row(
                                         children: [
                                           Text(
@@ -239,7 +239,7 @@ class DetailView extends StatelessWidget {
                                     ],
                                   ),
                                   const SizedBox(
-                                    height: 10,
+                                    height: 25,
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -265,7 +265,11 @@ class DetailView extends StatelessWidget {
                                       MiniBox(title: '17:00'),
                                     ],
                                   ),
+                                  const SizedBox(
+                                    height: 25,
+                                  ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Jam',
@@ -293,6 +297,7 @@ class DetailView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
+                                          const SizedBox(width: 5,),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5),
@@ -305,6 +310,7 @@ class DetailView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
+                                          const SizedBox(width: 5,),
                                           Container(
                                             height: 17,
                                             width: 21,
@@ -331,59 +337,61 @@ class DetailView extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Positioned(
-                              bottom: 0,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
-                                width: width,
-                                height: 86,
-                                color: Colors.white,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        const SizedBox(
-                                          height: 15,
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              width: width,
+                              height: 86,
+                              color: Colors.white,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        'Mulai Dari',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Constant.fontColor,
                                         ),
-                                        Text(
-                                          'Mulai Dari',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Constant.fontColor,
-                                          ),
+                                      ),
+                                      const Text(
+                                        'Rp. 120.000',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Constant.fontColor,
                                         ),
-                                        const Text(
-                                          'Rp. 120.000',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Constant.fontColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 216,
-                                      decoration: BoxDecoration(
-                                          color: Constant.primaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Center(
-                                        child: Text(
-                                          'Booking Sekarang',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white,
-                                          ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 40,
+                                    width: 216,
+                                    decoration: BoxDecoration(
+                                        color: Constant.primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        'Booking Sekarang',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

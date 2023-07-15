@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant.dart';
 import 'box_history.dart';
+import 'detail_pesanan_onReview.dart';
 
 class BaruSajaView extends StatelessWidget {
   BaruSajaView({super.key});
@@ -24,17 +25,25 @@ class BaruSajaView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: BoxHistoriStudio(
-              width: width,
-              widget: Text(
-                'Pesanan Sedang Ditinju',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  color: Constant.primaryColor,
-                  fontSize: 10,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => DetailPesananOnReview(
+                          onReview: true,
+                        )));
+              },
+              child: BoxHistoriStudio(
+                width: width,
+                widget: Text(
+                  'Pesanan Sedang Ditinju',
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600,
+                    color: Constant.primaryColor,
+                    fontSize: 10,
+                  ),
                 ),
+                imgUrl: imgUrl[index],
               ),
-              imgUrl: imgUrl[index],
             ),
           );
         },
