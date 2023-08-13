@@ -4,11 +4,11 @@ import 'package:studioz/pages/home/homePage.dart';
 import 'package:studioz/pages/profile/profile_page.dart';
 import 'package:studioz/pages/wishtlist/wishlist_page.dart';
 
-
 import 'constant.dart';
 
 class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({super.key});
+  const BottomNavbar({super.key, required this.selectedIndex});
+  final int selectedIndex;
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
@@ -17,13 +17,19 @@ class BottomNavbar extends StatefulWidget {
 class _BottomNavbarState extends State<BottomNavbar> {
   int selectedIndex = 0;
 
-    final List<Widget> _pages = const[
+  final List<Widget> _pages = const [
     HomePage(),
     WishlistPage(),
     BookingPage(),
     ProfilePage()
   ];
- 
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.selectedIndex;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +37,10 @@ class _BottomNavbarState extends State<BottomNavbar> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
           enableFeedback: false,
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               selectedIndex = index;
             });
-           
           },
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,

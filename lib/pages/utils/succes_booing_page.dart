@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:studioz/bot_navbar.dart';
 
 import '../../constant.dart';
+import '../booking/detail_pesanan_onReview.dart';
 
 class PaymentSuccessPage extends StatelessWidget {
   const PaymentSuccessPage({super.key});
@@ -14,9 +16,9 @@ class PaymentSuccessPage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: height * 0.1,
+            height: height * 0.15,
           ),
-          Image.asset('assets/images/success_img.png'),
+          Image.asset('assets/icons/success_img.png'),
           const SizedBox(
             height: 20,
           ),
@@ -29,7 +31,7 @@ class PaymentSuccessPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           Text(
             'Berhasil',
@@ -39,30 +41,45 @@ class PaymentSuccessPage extends StatelessWidget {
               color: Constant.fontColor,
             ),
           ),
-          Text(
-            'Pembayaran anda telah berhasil tunggu pihak studio menyetujui pemesanan anda klik detail untu melanjutan',
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: const Color(0xff515151),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'Pembayaran anda telah berhasil tunggu pihak studio menyetujui pemesanan anda klik detail untu melanjutan',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xff515151),
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           SizedBox(
-            height: height * 0.03,
+            height: height * 0.08,
           ),
-          Container(
-            height: 40,
-            width: width * 0.7,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Constant.primaryColor),
-            child: Center(
-              child: Text(
-                'Detail Order',
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => DetailPesananOnReview(
+                        onReview: true,
+                      )));
+            },
+            child: Container(
+              height: 40,
+              width: width * 0.7,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Constant.primaryColor),
+              child: Center(
+                child: Text(
+                  'Detail Order',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -70,12 +87,20 @@ class PaymentSuccessPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(
-            'Kembali ke Halaman Utama',
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Constant.primaryColor,
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const BottomNavbar(
+                        selectedIndex: 0,
+                      )));
+            },
+            child: Text(
+              'Kembali ke Halaman Utama',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Constant.primaryColor,
+              ),
             ),
           )
         ],

@@ -12,6 +12,14 @@ class WishlistPage extends StatefulWidget {
 }
 
 class _WishlistPageState extends State<WishlistPage> {
+  bool onTap = true;
+
+  void onIconTap() {
+    setState(() {
+      onTap = !onTap;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -61,6 +69,10 @@ class _WishlistPageState extends State<WishlistPage> {
                         child: CardItemWishlist(
                           width: width,
                           imgUrl: imgUrl[index],
+                          icon: onTap
+                              ? Icons.bookmark_outline
+                              : Icons.bookmark_rounded,
+                          onPressed: () => onIconTap(),
                         ),
                       ),
                     );
@@ -86,10 +98,14 @@ class CardItemWishlist extends StatelessWidget {
     super.key,
     required this.width,
     required this.imgUrl,
+    required this.icon,
+    required this.onPressed,
   });
 
   final double width;
   final String imgUrl;
+  final IconData icon;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -120,12 +136,12 @@ class CardItemWishlist extends StatelessWidget {
                 top: 0,
                 right: 0,
                 child: IconButton(
-                  icon: const Icon(
-                    Icons.bookmark_rounded,
+                  icon: Icon(
+                    icon,
                     size: 26,
                     color: Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: onPressed,
                 ),
               ),
             ]),

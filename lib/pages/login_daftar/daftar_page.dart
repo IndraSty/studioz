@@ -239,7 +239,9 @@ class _DaftarPageState extends State<DaftarPage> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const BottomNavbar()));
+                      builder: (context) => const BottomNavbar(
+                            selectedIndex: 0,
+                          )));
                 },
                 child: Container(
                   height: 50,

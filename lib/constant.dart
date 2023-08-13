@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Constant {
   static const primaryColor = Color(0xff008B83);
   static const bodyColor = Color(0xffFAFAFA);

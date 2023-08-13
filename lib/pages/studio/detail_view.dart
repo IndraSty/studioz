@@ -3,12 +3,24 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant.dart';
 
-class DetailView extends StatelessWidget {
+class DetailView extends StatefulWidget {
   const DetailView({super.key});
 
   @override
+  State<DetailView> createState() => _DetailViewState();
+}
+
+class _DetailViewState extends State<DetailView> {
+  bool onTap = true;
+
+  void onClickItem() {
+    setState(() {
+      onTap = !onTap;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
@@ -190,14 +202,22 @@ class DetailView extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      const MiniBox(
-                                        title: 'Regular',
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: 'Regular',
+                                          onTap: onTap,
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      const MiniBox(
-                                        title: 'VIP',
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: 'VIP',
+                                          onTap: onTap,
+                                        ),
                                       )
                                     ],
                                   ),
@@ -257,19 +277,50 @@ class DetailView extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
-                                    children: const [
-                                      MiniBox(title: '13:00'),
-                                      MiniBox(title: '14:00'),
-                                      MiniBox(title: '15:00'),
-                                      MiniBox(title: '16:00'),
-                                      MiniBox(title: '17:00'),
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: '13:00',
+                                          onTap: onTap,
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: '14:00',
+                                          onTap: onTap,
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: '15:00',
+                                          onTap: onTap,
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: '16:00',
+                                          onTap: onTap,
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => onClickItem(),
+                                        child: MiniBox(
+                                          title: '17:00',
+                                          onTap: onTap,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 25,
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Jam',
@@ -297,7 +348,9 @@ class DetailView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(width: 5,),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5),
@@ -310,7 +363,9 @@ class DetailView extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(width: 5,),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
                                           Container(
                                             height: 17,
                                             width: 21,
@@ -430,9 +485,12 @@ class MiniBox extends StatelessWidget {
   const MiniBox({
     super.key,
     required this.title,
+    required this.onTap,
   });
 
   final String title;
+
+  final bool onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -440,7 +498,11 @@ class MiniBox extends StatelessWidget {
       height: 27,
       width: 65,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Constant.miniBox),
+        borderRadius: BorderRadius.circular(15),
+        color: onTap ? Colors.white : Constant.miniBox,
+        border:
+            onTap ? Border.all(color: Constant.primaryColor, width: 1) : null,
+      ),
       child: Center(
         child: Text(
           title,
